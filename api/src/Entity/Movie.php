@@ -6,30 +6,27 @@ use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * This is a dummy entity. Remove it!
- */
 #[ApiResource(mercure: true)]
 #[ORM\Entity]
-class Greeting
+class Movie
 {
-    /**
-     * The entity ID
-     */
     #[ORM\Id]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column]
     #[ORM\GeneratedValue]
     private ?int $id = null;
 
-    /**
-     * A nice guy
-     */
     #[ORM\Column]
-    #[Assert\NotBlank]
-    public string $name = '';
+    public string $title = '';
+
+    #[ORM\Column]
+    public int $year = 0;
+
+    #[ORM\Column]
+    public ?int $duration = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
 }
