@@ -2,12 +2,11 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
-use App\Repository\PeopleRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-//#[ApiResource(mercure: true)]
-//#[ORM\Entity(repositoryClass: PeopleRepository::class)]
+#[ApiResource(mercure: true, routePrefix: '/people')]
+//#[ORM\Entity]
 class People
 {
     #[ORM\Id]
@@ -18,7 +17,7 @@ class People
     #[ORM\Column(length: 150)]
     private ?string $name = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $birthdate = null;
 
     public function getId(): ?int

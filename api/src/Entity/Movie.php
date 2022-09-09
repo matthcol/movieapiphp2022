@@ -21,7 +21,7 @@ class Movie
     #[ORM\Column]
     public int $year = 0;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     public ?int $duration = null;
 
     public function getId(): ?int
